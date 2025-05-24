@@ -1,12 +1,12 @@
 import Contact from "../contacts/contact.model";
 
 export default class Message{
-    public id:number;
+    public id:string;
     public subject:string;
     public msgText:string;
-    public sender:Contact;
+    public sender:string;
     
-    constructor(id:number, subject:string, msgText:string, sender:Contact){
+    constructor(id:string, subject:string, msgText:string, sender:string){
         this.id = id;
         this.subject = subject;
         this.msgText = msgText;
