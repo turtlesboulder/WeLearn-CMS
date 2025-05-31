@@ -8,6 +8,7 @@ import { MOCKCONTACTS } from './mockcontacts';
 export class ContactService {
   public contacts: Contact[] = [];
   public contactSelectedEvent = new EventEmitter<Contact>();
+  public contactChangedEvent = new EventEmitter<Contact[]>();
   constructor() {
     this.contacts = MOCKCONTACTS;
 
@@ -20,4 +21,16 @@ export class ContactService {
       return c.id == id;
     })
    }
+
+   deleteContact(contact: Contact) {
+       if (!contact) { // if contact is undefined
+         return;
+       }
+       const pos = this.contacts.indexOf(contact);
+       if (pos < 0) { // indexOf returns -1 if search criteria does not exist
+         return;
+       }
+       this.contacts.splice(pos, 1);
+       this.contactChangedEvent.emit(this.contacts.slice());
+     }
 }
