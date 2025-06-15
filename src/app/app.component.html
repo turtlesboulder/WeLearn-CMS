@@ -1,9 +1,12 @@
-<cms-header></cms-header>
-<div class="container">
+<div (dragend) = "dragEnd($event)">
+  <cms-header></cms-header>
+  <div class="container">
    <div class="row">
       <div class="col-md-12">
         <router-outlet></router-outlet>
       </div>
     </div>
+  </div>
 </div>
 
+ 

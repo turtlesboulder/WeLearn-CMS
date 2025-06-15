@@ -14,4 +14,17 @@ import { WindRefService } from './wind-ref.service';
 export class AppComponent {
   title = 'cms';
 
+  constructor(private contactService:ContactService){
+
+  }
+
+  dragEnd(e:DragEvent){
+    let elem = document.elementFromPoint(e.clientX, e.clientY)
+    let container = document.querySelector("#contactDropper");
+    if (container != null && elem != null && container.contains(elem)){
+      this.contactService.drop();
+    }else{
+      this.contactService.setContactSelected(null);
+    }
+  }
 }

@@ -33,4 +33,8 @@ export class ContactListComponent implements OnInit, OnDestroy {
     this.selectedContact = contact;
     this.contactService.contactSelectedEvent.emit(contact);
   }
+
+  startDrag(contact:Contact){
+    this.contactService.setContactSelected(contact);
+  }
 }

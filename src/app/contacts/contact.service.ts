@@ -10,10 +10,22 @@ export class ContactService {
   public contactListChangedEvent = new Subject<Contact[]>();
   public contacts: Contact[] = [];
   public contactSelectedEvent = new EventEmitter<Contact>();
+  public contactDroppedEvent = new EventEmitter<Contact>();
   private maxId:number;
+  public contactSelected:Contact;
   constructor() {
     this.contacts = MOCKCONTACTS;
     this.maxId = this.getMaxId();
+    this.contactSelected = null;
+   }
+   setContactSelected(contact:Contact){
+    this.contactSelected = contact;
+   }
+   drop(){
+    if (this.contactSelected != null){
+      this.contactDroppedEvent.next(JSON.parse(JSON.stringify(this.contactSelected)));
+      this.contactSelected = null;
+    }
    }
    getContacts(): Contact[]{
       return this.contacts.slice();
