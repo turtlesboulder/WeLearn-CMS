@@ -13,6 +13,7 @@ export class ContactListComponent implements OnInit, OnDestroy {
   public contacts: Contact [] = [];
   public selectedContact:Contact;
   public subscription:Subscription;
+  public term:string = "";
 
   ngOnInit(){
     this.contacts = this.contactService.getContacts();
@@ -36,5 +37,9 @@ export class ContactListComponent implements OnInit, OnDestroy {
 
   startDrag(contact:Contact){
     this.contactService.setContactSelected(contact);
+  }
+
+  search(value: string){
+    this.term = value;
   }
 }

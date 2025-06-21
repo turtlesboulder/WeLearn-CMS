@@ -3,6 +3,7 @@ import { ContactService } from './contacts/contact.service';
 import { DocumentService } from './documents/document.service';
 import { MessageService } from './messages/message.service';
 import { WindRefService } from './wind-ref.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'cms-root',
